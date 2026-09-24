@@ -1,0 +1,419 @@
+:root {
+  --bg: #07090d;
+  --panel: #10131a;
+  --paper: #f2eee7;
+  --muted: #a7a4a0;
+  --red: #ff4d32;
+  --gold: #d7ad6c;
+  --line: rgba(255, 255, 255, .14);
+  --pad: clamp(20px, 5vw, 76px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--paper); font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; }
+
+.topbar { position: absolute; z-index: 10; inset: 0 0 auto; height: 82px; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.brand { font-weight: 900; letter-spacing: .18em; }
+.brand span { color: var(--red); }
+.topbar nav { display: flex; gap: 26px; font-size: 13px; color: #d5d1cb; }
+.topbar nav a:hover { color: var(--gold); }
+.edition { font: 12px ui-monospace, monospace; color: var(--muted); letter-spacing: .12em; }
+
+.hero { position: relative; min-height: 100svh; display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; padding: 150px var(--pad) 70px; overflow: hidden; background: radial-gradient(circle at 75% 25%, rgba(255,77,50,.18), transparent 28%), linear-gradient(145deg, #0a0c12, #050609 72%); }
+.hero::before { content: ""; position: absolute; right: -8vw; top: 9vh; width: 46vw; height: 46vw; border: 1px solid rgba(215,173,108,.24); border-radius: 50%; box-shadow: 0 0 0 7vw rgba(255,255,255,.014), 0 0 0 15vw rgba(255,255,255,.009); }
+.hero::after { content: "夜"; position: absolute; right: -.03em; bottom: -.23em; font: 800 min(49vw,700px)/1 "Songti SC", serif; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.055); }
+.hero-copy, .hero-aside { position: relative; z-index: 2; }
+.eyebrow { color: var(--gold); font-size: 13px; letter-spacing: .22em; }
+.hero h1 { margin: .18em 0; font: 700 clamp(4.6rem,10.5vw,9.7rem)/.86 "Songti SC", "Noto Serif SC", serif; }
+.city-title { display: block; color: var(--paper); font-size: 1.12em; letter-spacing: -.11em; text-shadow: 0 0 46px rgba(255,77,50,.2), 0 12px 50px rgba(0,0,0,.55); }
+.outline { display: block; color: transparent; font-size: .54em; line-height: 1.05; letter-spacing: .06em; transform: translateX(.18em); -webkit-text-stroke: 1px rgba(242,238,231,.52); }
+.lead { max-width: 620px; padding-left: 19px; border-left: 4px solid var(--red); font-size: clamp(16px,1.6vw,20px); line-height: 1.85; color: #c9c3bc; }
+.cta { display: inline-block; margin: 20px 0 0 23px; padding: 13px 19px; background: var(--red); font-weight: 700; }
+.hero-aside { display: grid; justify-items: end; gap: 34px; }
+.seal { width: 154px; aspect-ratio: 1; border: 1px solid rgba(215,173,108,.45); border-radius: 50%; display: grid; place-items: center; text-align: center; color: var(--gold); font: 12px/1.7 ui-monospace, monospace; letter-spacing: .12em; transform: rotate(7deg); }
+.seal b { display: block; color: var(--paper); font: 700 42px/1 Georgia, serif; }
+.route { width: min(100%, 350px); padding-top: 20px; border-top: 1px solid var(--line); }
+.route small { color: var(--muted); letter-spacing: .13em; }
+.route p { font-size: 14px; line-height: 1.8; }
+
+.section { position: relative; padding: clamp(90px,11vw,150px) var(--pad); }
+.section-head { display: grid; grid-template-columns: 1fr minmax(280px,440px); gap: 30px; align-items: end; margin-bottom: 55px; }
+.section-head > p { margin: 0; color: var(--muted); line-height: 1.8; }
+.index { color: var(--red); font: 12px ui-monospace, monospace; letter-spacing: .2em; }
+.section h2 { font: 700 clamp(2.8rem,6vw,5.8rem)/1 "Songti SC", serif; letter-spacing: -.055em; margin: .16em 0 0; }
+.chapter-nav { position: sticky; top: 12px; z-index: 5; display: flex; gap: 8px; overflow-x: auto; padding: 10px; margin-bottom: 30px; background: rgba(12,14,20,.88); border: 1px solid var(--line); backdrop-filter: blur(16px); }
+.chapter-nav a { white-space: nowrap; padding: 10px 16px; border-radius: 100px; font-size: 13px; color: #c9c5bf; }
+.chapter-nav a:hover { background: var(--paper); color: var(--bg); }
+
+.bar { scroll-margin-top: 90px; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr); gap: clamp(34px,6vw,90px); align-items: center; padding: clamp(70px,9vw,125px) 0; border-top: 1px solid var(--line); }
+.bar:nth-of-type(even) { grid-template-columns: minmax(320px,.85fr) minmax(0,1.15fr); }
+.bar:nth-of-type(even) .gallery { order: 2; }
+.gallery { display: grid; grid-template-columns: 1.55fr .8fr; grid-template-rows: 1fr 1fr; gap: 10px; min-height: 570px; }
+.photo { margin: 0; background: #151820; overflow: hidden; }
+.photo:first-child { grid-row: 1/3; }
+.photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.86) brightness(.82); transition: .6s; }
+.photo:hover img { transform: scale(1.035); filter: saturate(1) brightness(.94); }
+.bar-no { color: var(--gold); font: 12px ui-monospace, monospace; letter-spacing: .2em; }
+.bar h3 { font: 700 clamp(3rem,6vw,6.2rem)/.95 Georgia, "Songti SC", serif; letter-spacing: -.05em; margin: .18em 0; }
+.bar h3 span { display: block; margin-top: 10px; font: 500 clamp(1.15rem,2vw,1.65rem) "Songti SC", serif; color: #cac4bc; letter-spacing: .02em; }
+.status { display: inline-block; padding: 8px 12px; border: 1px solid var(--line); font-size: 12px; color: #c8c3bd; }
+.status::before { content: "●"; margin-right: 8px; color: #67b486; }
+.status.caution::before { color: var(--gold); }
+.desc { color: #bbb6af; font-size: 16px; line-height: 1.95; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; margin: 30px 0 0; border: 1px solid var(--line); }
+.facts div { padding: 17px 18px; border-bottom: 1px solid var(--line); }
+.facts div:nth-child(odd) { border-right: 1px solid var(--line); }
+.facts div:nth-last-child(-n+2) { border-bottom: 0; }
+.facts dt { color: #747370; font-size: 12px; margin-bottom: 7px; }
+.facts dd { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.tags span { padding: 8px 12px; border: 1px solid var(--line); color: #bab6b0; font-size: 12px; }
+
+.drinks { background: linear-gradient(150deg,#12151c,#090b10); }
+.drink-grid, .compare-grid { display: grid; grid-template-columns: repeat(5,1fr); border: 1px solid var(--line); }
+.drink-grid article { min-height: 300px; padding: 25px; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between; }
+.drink-grid article:last-child { border-right: 0; }
+.drink-grid span { color: var(--red); font: 12px ui-monospace, monospace; }
+.drink-grid h3 { font: 700 clamp(1.5rem,2.4vw,2.3rem)/1.08 Georgia, serif; }
+.drink-grid p { color: var(--muted); line-height: 1.7; }
+.drink-grid b { color: var(--gold); font-size: 13px; }
+
+.compare { background: var(--paper); color: #0b0d11; }
+.compare .index { color: #c73c29; }
+.compare-grid { border-color: rgba(0,0,0,.2); }
+.compare-grid article { padding: 27px 22px; border-right: 1px solid rgba(0,0,0,.16); }
+.compare-grid article:last-child { border: 0; }
+.compare-grid b { font: 700 24px Georgia, serif; }
+.compare-grid small { display: block; margin: 15px 0 30px; color: #77706a; }
+.compare-grid p { color: #4e4b48; font-size: 14px; line-height: 1.75; }
+
+.guide { background: linear-gradient(140deg,#0b0d12,#12151c); }
+.guide-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--line); }
+.guide-grid article { min-height: 240px; padding: 32px; border-right: 1px solid var(--line); }
+.guide-grid article:last-child { border: 0; }
+.guide-grid em { color: var(--red); font: 12px ui-monospace, monospace; }
+.guide-grid h3 { margin: 50px 0 14px; font: 600 23px "Songti SC", serif; }
+.guide-grid p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+
+footer { padding: 75px var(--pad) 40px; display: flex; justify-content: space-between; align-items: end; gap: 40px; border-top: 1px solid var(--line); background: #050609; }
+.footer-title { font: 700 clamp(2.8rem,7vw,7rem)/.95 "Songti SC", serif; letter-spacing: -.06em; }
+.footer-title span { color: var(--red); }
+footer > p { max-width: 480px; color: var(--muted); line-height: 1.8; }
+
+@media (max-width: 980px) {
+  .topbar nav { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-aside { justify-items: start; margin-top: 55px; }
+  .seal { display: none; }
+  .section-head { grid-template-columns: 1fr; }
+  .bar, .bar:nth-of-type(even) { grid-template-columns: 1fr; }
+  .bar:nth-of-type(even) .gallery { order: 0; }
+  .gallery { min-height: 520px; }
+  .drink-grid, .compare-grid { grid-template-columns: 1fr 1fr; }
+  .guide-grid { grid-template-columns: 1fr; }
+  .guide-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 600px) {
+  .topbar { height: 68px; }
+  .edition { display: none; }
+  .hero { padding-top: 120px; }
+  .hero h1 { font-size: clamp(4.1rem,20vw,6.8rem); }
+  .city-title { font-size: 1em; }
+  .outline { font-size: .46em; }
+  .cta { margin-left: 0; }
+  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 330px 180px; min-height: 0; }
+  .photo:first-child { grid-column: 1/3; grid-row: auto; }
+  .bar h3 { font-size: clamp(2.8rem,14vw,4.5rem); }
+  .facts { grid-template-columns: 1fr; }
+  .facts div:nth-child(n) { border-right: 0; border-bottom: 1px solid var(--line); }
+  .facts div:last-child { border-bottom: 0; }
+  .drink-grid, .compare-grid { grid-template-columns: 1fr; }
+  .drink-grid article { min-height: 220px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .compare-grid article { border-right: 0; border-bottom: 1px solid rgba(0,0,0,.16); }
+  footer { align-items: start; flex-direction: column; }
+}
+
+/* 浏览器兼容与布局修复：确保本地直接打开时内容不会被裁切 */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+main,
+header,
+footer,
+section,
+article,
+nav,
+.hero-copy,
+.hero-aside,
+.bar-copy {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hero {
+  min-height: 720px;
+  height: auto;
+}
+
+@supports (height: 100svh) {
+  .hero { min-height: 100svh; }
+}
+
+.hero h1,
+.bar h3,
+.drink-grid h3 {
+  overflow-wrap: anywhere;
+}
+
+.gallery {
+  width: 100%;
+  height: clamp(460px, 50vw, 570px);
+  min-height: 0;
+}
+
+.photo {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  background: linear-gradient(135deg, #151820, #281511);
+}
+
+.photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.facts,
+.drink-grid,
+.compare-grid,
+.guide-grid {
+  width: 100%;
+}
+
+.drink-grid article,
+.compare-grid article,
+.guide-grid article {
+  min-width: 0;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    min-height: 760px;
+    align-content: center;
+  }
+
+  .gallery {
+    height: 520px;
+  }
+
+  .drink-grid article:nth-child(2n),
+  .compare-grid article:nth-child(2n) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    position: absolute;
+    width: 100%;
+  }
+
+  .hero {
+    min-height: 700px;
+    padding: 110px var(--pad) 55px;
+    align-content: end;
+  }
+
+  .hero::before {
+    width: 82vw;
+    height: 82vw;
+    right: -28vw;
+  }
+
+  .hero::after {
+    font-size: 90vw;
+  }
+
+  .city-title {
+    letter-spacing: -.08em;
+  }
+
+  .section {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  .gallery {
+    height: auto;
+    min-height: 0;
+    grid-template-rows: 320px 180px;
+  }
+
+  .photo img {
+    position: absolute;
+  }
+
+  .drink-grid article:nth-child(n),
+  .compare-grid article:nth-child(n),
+  .guide-grid article:nth-child(n) {
+    border-right: 0;
+  }
+
+  .footer-title {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 4rem; }
+  .gallery { grid-template-rows: 270px 150px; }
+  .chapter-nav { margin-left: -10px; margin-right: -10px; }
+}
+
+/* Final responsive pass: desktop, tablet and mobile */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: 76px;
+}
+
+body { min-width: 320px; }
+img { max-width: 100%; }
+a { -webkit-tap-highlight-color: transparent; }
+.cta { min-height: 46px; display: inline-flex; align-items: center; }
+.chapter-nav { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.chapter-nav::-webkit-scrollbar { display: none; }
+
+@media (min-width: 1440px) {
+  .bar { max-width: 1440px; margin-inline: auto; }
+  .section-head,
+  .chapter-nav,
+  .drink-grid,
+  .compare-grid,
+  .guide-grid {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 980px) {
+  .section {
+    padding-top: clamp(72px, 10vw, 100px);
+    padding-bottom: clamp(72px, 10vw, 100px);
+  }
+
+  .hero {
+    min-height: max(720px, 100svh);
+    align-content: end;
+  }
+
+  .hero h1 { font-size: clamp(4.8rem, 15vw, 8.2rem); }
+  .hero-aside { margin-top: 34px; }
+  .route { max-width: 560px; }
+  .gallery { height: clamp(500px, 72vw, 660px); }
+  .bar { gap: 36px; }
+  .bar-copy { max-width: 760px; }
+}
+
+@media (max-width: 600px) {
+  :root { --pad: clamp(16px, 5vw, 24px); }
+  html { scroll-padding-top: 64px; }
+
+  .topbar {
+    height: 64px;
+    padding-left: max(var(--pad), env(safe-area-inset-left));
+    padding-right: max(var(--pad), env(safe-area-inset-right));
+  }
+
+  .brand { font-size: 14px; letter-spacing: .13em; }
+
+  .hero {
+    min-height: max(660px, 100svh);
+    padding: calc(92px + env(safe-area-inset-top)) var(--pad) calc(52px + env(safe-area-inset-bottom));
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 21vw, 6.4rem);
+    line-height: .9;
+    margin: .28em 0;
+  }
+
+  .hero::before { top: 18%; width: 88vw; height: 88vw; }
+  .city-title { letter-spacing: -.075em; }
+  .outline { font-size: .47em; letter-spacing: .04em; transform: translateX(.06em); }
+  .eyebrow { font-size: 12px; line-height: 1.55; letter-spacing: .15em; }
+  .lead { padding-left: 14px; font-size: 16px; line-height: 1.7; }
+  .cta { width: 100%; justify-content: center; margin-top: 18px; }
+  .route p { font-size: 14px; }
+  .section { padding-top: 68px; padding-bottom: 68px; }
+  .section-head { gap: 18px; margin-bottom: 34px; }
+  .section h2 { font-size: clamp(2.55rem, 13vw, 4rem); line-height: 1.03; }
+  .section-head > p { font-size: 16px; line-height: 1.7; }
+
+  .chapter-nav {
+    top: 8px;
+    margin: 0 calc(var(--pad) * -.35) 24px;
+    padding: 8px;
+  }
+
+  .chapter-nav a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 9px 14px;
+  }
+
+  .bar { scroll-margin-top: 72px; padding: 58px 0; gap: 28px; }
+  .gallery {
+    grid-template-rows: clamp(270px, 88vw, 390px) clamp(138px, 45vw, 190px);
+    gap: 7px;
+  }
+
+  .bar h3 {
+    font-size: clamp(2.65rem, 13vw, 4.1rem);
+    line-height: 1;
+  }
+
+  .bar h3 span { font-size: 1.18rem; line-height: 1.45; }
+  .status { font-size: 13px; line-height: 1.45; }
+  .desc { font-size: 16px; line-height: 1.78; }
+  .facts div { padding: 15px 14px; }
+  .facts dt { font-size: 13px; }
+  .facts dd { font-size: 14px; }
+  .tags span { font-size: 13px; }
+  .drink-grid article { min-height: 210px; padding: 22px 18px; }
+  .drink-grid h3 { font-size: 1.8rem; }
+  .compare-grid article { padding: 24px 18px; }
+  .compare-grid small { margin: 10px 0 18px; }
+  .guide-grid article { min-height: 0; padding: 26px 18px; }
+  .guide-grid h3 { margin: 30px 0 12px; }
+  footer { padding-bottom: calc(36px + env(safe-area-inset-bottom)); }
+  footer > p { font-size: 15px; }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 3.8rem; }
+  .gallery { grid-template-rows: 260px 132px; }
+}
+
+@media (hover: none) {
+  .photo:hover img { transform: none; filter: saturate(.86) brightness(.82); }
+}

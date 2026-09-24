@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Life In Berkeley</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#eeeeee;
+            font-family: 'Arial Black', sans-serif;
+            padding:20px;
+        }
+        .poster{
+            width:900px;
+            min-height:1300px;
+            background:#ececec;
+            margin:0 auto;
+            padding:40px;
+            position:relative;
+            color:#2c2c2c;
+        }
+        h1.main-title{
+            font-size:90px;
+            line-height:0.9;
+            text-transform: uppercase;
+            margin-bottom:30px;
+        }
+        .divider-line{
+            border-bottom:2px solid #444;
+            margin-bottom:35px;
+        }
+        .vertical-text-right{
+            position:absolute;
+            top:30px;
+            right:40px;
+        }
+        .steps-big{
+            font-size:92px;
+            font-weight:bold;
+            writing-mode: vertical-rl;
+            display:flex;
+        }
+        .steps-yellow{
+            color:#f7e623;
+        }
+        .steps-gray-text{
+            font-size:14px;
+            writing-mode: vertical-rl;
+            position:absolute;
+            right:10px;
+            top:30px;
+        }
+
+        .row-top{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap:30px;
+            margin-bottom:40px;
+        }
+        .section-title{
+            font-size:48px;
+            text-transform:uppercase;
+            line-height:0.92;
+            margin-bottom:20px;
+        }
+        .food-list{
+            display:flex;
+            flex-wrap:wrap;
+            gap:12px;
+            align-items:center;
+        }
+        .food-item-row{
+            display:flex;
+            align-items:center;
+            gap:20px;
+            margin:14px 0;
+        }
+        .yellow-circle{
+            width:80px;
+            height:80px;
+            border-radius:50%;
+            background-color:#f7e623;
+        }
+        .food-text li{
+            list-style:none;
+            font-size:22px;
+            line-height:1.6;
+        }
+
+        .hotspots .bar-container{
+            display:flex;
+            align-items:end;
+            height:220px;
+            gap:14px;
+        }
+        .bar{
+            width:32px;
+            background:#f7e623;
+            flex-shrink:0;
+        }
+        .bar-label{
+            writing-mode: vertical-rl;
+            text-align:center;
+            margin-top:8px;
+            font-size:16px;
+        }
+
+        .pie-wrap{
+            display:flex;
+            gap:30px;
+            align-items:center;
+        }
+        .pie{
+            width:260px;
+            height:260px;
+            border-radius:50%;
+            background:#f7e623;
+            position:relative;
+        }
+        .pie-line1{
+            position:absolute;
+            top:50%;left:50%;
+            width:135px;height:2px;background:#ececec;
+            transform:rotate(25deg);
+            transform-origin:left center;
+        }
+        .pie-line2{
+            position:absolute;
+            top:50%;left:50%;
+            width:135px;height:2px;background:#ececec;
+            transform:rotate(90deg);
+            transform-origin:left center;
+        }
+        .pie-line3{
+            position:absolute;
+            top:50%;left:50%;
+            width:135px;height:2px;background:#ececec;
+            transform:rotate(145deg);
+            transform-origin:left center;
+        }
+        .pie-line4{
+            position:absolute;
+            top:50%;left:50%;
+            width:135px;height:2px;background:#ececec;
+            transform:rotate(200deg);
+            transform-origin:left center;
+        }
+        .pie-numbers>span{
+            position:absolute;
+            font-size:30px;
+        }
+        .n1{top:70px;right:40px;}
+        .n2{bottom:50px;left:45px;}
+        .n3{top:60px;left:50px;}
+        .n4{top:35px;left:115px;}
+        .n5{top:45px;right:75px;}
+        .playlist-text ul{
+            list-style:none;
+            font-size:17px;
+            line-height:1.7;
+        }
+
+        .transport-section{
+            margin:40px 0;
+        }
+        .transport-item{
+            display:flex;
+            align-items:center;
+            margin:16px 0;
+            gap:12px;
+        }
+        .transport-label{
+            width:70px;
+            font-size:34px;
+            text-transform:uppercase;
+        }
+        .transport-bar{
+            height:32px;
+            background:#f7e623;
+        }
+        .bar-bus{width:230px;}
+        .bar-scooter{width:260px;}
+        .bar-foot{width:330px;}
+        .bar-car{width:150px;}
+
+        .rest-row{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap:30px;
+        }
+        .rest-list{
+            font-size:15px;
+        }
+        .rest-item{
+            display:flex;
+            gap:6px;
+            margin:7px 0;
+        }
+        .star-yellow{
+            color:#f7e623;
+        }
+
+        .weekly-area{
+            margin:45px 0;
+        }
+        .area-chart{
+            height:180px;
+            position:relative;
+        }
+        .area-shape{
+            background-color:#f7e623;
+            clip-path: polygon(
+                0% 88%,
+                12% 80%,
+                24% 72%,
+                33% 48%,
+                43% 76%,
+                54% 64%,
+                68% 32%,
+                82% 62%,
+                92% 82%,
+                100% 90%,
+                100% 100%,0% 100%
+            );
+            width:100%;
+            height:150px;
+        }
+        .week-labels{
+            display:flex;
+            justify-content:space-between;
+            width:100%;
+            margin-top:8px;
+        }
+
+        .bottom-time{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-top:50px;
+        }
+        .time-big{
+            font-size:90px;
+            font-weight:bold;
+        }
+        .time-middle-text{
+            text-align:center;
+            font-size:17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <h1 class="main-title">MY LIFE IN BERKELEY</h1>
+        <div class="divider-line"></div>
+
+        <div class="vertical-text-right">
+            <div class="steps-big">
+                <span>5,795</span><span class="steps-yellow">STEPS</span>
+            </div>
+            <div class="steps-gray-text">Average daily steps taken over a month of time</div>
+        </div>
+
+        <div class="row-top">
+            <div>
+                <h2 class="section-title">MOST COMMONLY<br>CONSUMED GOODS</h2>
+                <div class="food-list">
+                    <div class="food-item-row">
+                        <div class="yellow-circle"></div>
+                        <ul class="food-text">
+                            <li>Figs</li>
+                            <li>Salmon</li>
+                            <li>Eggs</li>
+                            <li>Avocado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">MOST LISTENED<br>PLAYLISTS</h2>
+                <div class="pie-wrap">
+                    <div class="pie">
+                        <div class="pie-line1"></div>
+                        <div class="pie-line2"></div>
+                        <div class="pie-line3"></div>
+                        <div class="pie-line4"></div>
+                        <div class="pie-numbers">
+                            <span class="n1">1</span>
+                            <span class="n2">2</span>
+                            <span class="n3">3</span>
+                            <span class="n4">4</span>
+                            <span class="n5">5</span>
+                        </div>
+                    </div>
+                    <div class="playlist-text">
+                        <ul>
+                            <li>1. I Love Dream Pop</li>
+                            <li>2. Existential</li>
+                            <li>3. All Time Favs</li>
+                            <li>4. Teenage Euphoria</li>
+                            <li>5. Sick Tunes Bruv</li>
+                        </ul>
+                        <p style="margin-top:12px;font-style:italic;">On Spotify Music</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-top">
+            <div class="hotspots">
+                <h2 class="section-title">MY HOT SPOTS</h2>
+                <p style="font-style:italic;margin-bottom:12px;">Which places on campus I spend most of my time at</p>
+                <div class="bar-container">
+                    <div>
+                        <div class="bar" style="height:190px;"></div>
+                        <div class="bar-label">JACOBS HALL</div>
+                    </div>
+                    <div>
+                        <div class="bar" style="height:155px;"></div>
+                        <div class="bar-label">SODA HALL</div>
+                    </div>
+                    <div>
+                        <div class="bar" style="height:110px;"></div>
+                        <div class="bar-label">DWINELLE</div>
+                    </div>
+                    <div>
+                        <div class="bar" style="height:65px;"></div>
+                        <div class="bar-label">CHEIT</div>
+                    </div>
+                    <div>
+                        <div class="bar" style="height:85px;"></div>
+                        <div class="bar-label">MLK UNION</div>
+                    </div>
+                    <div>
+                        <div class="bar" style="height:50px;"></div>
+                        <div class="bar-label">KRESGE</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">BEST PLACES TO EAT</h2>
+                <p style="font-style:italic;margin-bottom:12px;">Rating Berkeley restaurants out of 5 stars</p>
+                <div class="rest-list">
+                    <div class="rest-item"><span>GREAT CHINA</span><span class="star-yellow">★★★★★</span></div>
+                    <div class="rest-item"><span>OASIS GRILL</span><span class="star-yellow">★★★★☆</span></div>
+                    <div class="rest-item"><span>ANGELINE'S</span><span class="star-yellow">★★★★☆</span></div>
+                    <div class="rest-item"><span>IMM THAI</span><span class="star-yellow">★★★★★</span></div>
+                    <div class="rest-item"><span>LA VAL'S PIZZA</span><span class="star-yellow">★★★☆☆</span></div>
+                    <div class="rest-item"><span>LA NOTE</span><span class="star-yellow">★★★★☆</span></div>
+                    <div class="rest-item"><span>JUPITER'S</span><span class="star-yellow">★★★★☆</span></div>
+                    <div class="rest-item"><span>SIZZLING LUNCH</span><span class="star-yellow">★★★★★</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="transport-section">
+            <h2 class="section-title">MY MODES OF TRANSPORTATION</h2>
+            <p style="font-style:italic;margin-bottom:14px;">My Modes of Transportation around Berkeley</p>
+            <div class="transport-item">
+                <div class="transport-label">BUS</div>
+                <div class="transport-bar bar-bus"></div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-label">SCOOTER</div>
+                <div class="transport-bar bar-scooter"></div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-label">FOOT</div>
+                <div class="transport-bar bar-foot"></div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-label">CAR</div>
+                <div class="transport-bar bar-car"></div>
+            </div>
+        </div>
+
+        <div class="weekly-area">
+            <h2 class="section-title">WEEKLY TIME SPENT<br>IN COMMITMENTS</h2>
+            <div class="area-chart">
+                <div class="area-shape"></div>
+                <div class="week-labels">
+                    <span>M</span>
+                    <span>T</span>
+                    <span>W</span>
+                    <span>TH</span>
+                    <span>F</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-time">
+            <div class="time-big">9:15 AM</div>
+            <div class="time-middle-text">
+                <p>Average time I wake up</p>
+                <p style="margin-top:6px;">& Average time I sleep</p>
+            </div>
+            <div class="time-big">12:45 AM</div>
+        </div>
+    </div>
+</body>
+</html>
